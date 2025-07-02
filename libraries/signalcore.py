@@ -396,7 +396,7 @@ def get_auto_ctrl_rf_amp():
     _error_handler(error_code)
     return auto_ctrl
 
-def get_idn():
+def get_idn(SC1):
     #returns the device's info
     error_code, IDN = SC1.get_device_idn()
     print(IDN)
@@ -652,45 +652,45 @@ def calc_gain():
     print(gain)
     return gain
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    #how to initialize the device
-    print("INITIALIZING AND GETTING BASIC DEVICE INFORMATION")
-    print()
-    print()
+#     #how to initialize the device
+#     print("INITIALIZING AND GETTING BASIC DEVICE INFORMATION")
+#     print()
+#     print()
 
-    #Establish the name and serial number of the instrument. Ensure that the serial number matches yours.
-    SC1 = SignalCore_SC5318A("SC1", "10002EA6")
-    print("Device opened!")
+#     #Establish the name and serial number of the instrument. Ensure that the serial number matches yours.
+#     SC1 = SignalCore_SC5318A("SC1", "10002EA6")
+#     print("Device opened!")
 
-    #displays the device's info
-    get_idn()
+#     #displays the device's info
+#     get_idn()
 
-    print("Reading the current temperature of the device...")
-    device_temp()
+#     print("Reading the current temperature of the device...")
+#     device_temp()
 
-    get_rf_frequency()
-    get_if_frequency()
-    get_lo_frequency()
+#     get_rf_frequency()
+#     get_if_frequency()
+#     get_lo_frequency()
 
-    print("Displaying the current RF parameters...")
-    display_rf_parameters()
+#     print("Displaying the current RF parameters...")
+#     display_rf_parameters()
 
-    #get the gain conversion
-    calc_gain()
+#     #get the gain conversion
+#     calc_gain()
 
-    #reading from the eeprom
-    read_eeprom(0, 0x04, 4)
+#     #reading from the eeprom
+#     read_eeprom(0, 0x04, 4)
 
-    #example of the reg_read and reg_write commands
-    #reads back the device's serial number
-    reg_read(0x30, 0)
-    #sets RF in freq to 1200000000000 Hz
-    reg_write(0x10, 1200000000000)
+#     #example of the reg_read and reg_write commands
+#     #reads back the device's serial number
+#     reg_read(0x30, 0)
+#     #sets RF in freq to 1200000000000 Hz
+#     reg_write(0x10, 1200000000000)
 
-    print("Changing the IF frequency value...")
-    set_if_frequency(1.2e9)
-    get_if_atten_value()
+#     print("Changing the IF frequency value...")
+#     set_if_frequency(1.2e9)
+#     get_if_atten_value()
 
-    print("Closing device")
-    close_device()
+#     print("Closing device")
+#     close_device()
